@@ -4,8 +4,7 @@
 
 #ifndef AP_PROJECT2_SOLVER_H
 #define AP_PROJECT2_SOLVER_H
-#include "Solution.h"
-#include "Problem.h"
+template <typename Problem, typename Solution>
 
 class Solver {
     virtual Solution solve(Problem problem) = 0;
