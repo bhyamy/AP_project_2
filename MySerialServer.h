@@ -10,13 +10,18 @@
 #include <sys/socket.h>
 #include <unistd.h>
 #include <thread>
-#include <time.h>
+#define TIMEOUT 120
 using namespace std;
 
 class MySerialServer : public server_side::Server{
-    int sock, client_socket;
-    sockaddr_in address;
+    //member attributes
+    int _sock, _client_socket;
+    sockaddr_in _address;
+    bool _should_stop;
+    thread* _readingLoop;
 
+    //private functions
+    void reading(ClientHandler* clientHandler);
 
 public:
     //ctor
