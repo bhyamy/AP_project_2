@@ -5,9 +5,19 @@
 #ifndef AP_PROJECT2_FILECACHEMANAGER_H
 #define AP_PROJECT2_FILECACHEMANAGER_H
 #include "CacheManager.h"
+#include <string>
+using namespace std;
 
-class FileCacheManager : public CacheManager {
-
+class FileCacheManager : public CacheManager<string, string> {
+public:
+    //ctor
+    FileCacheManager();
+    //dtor
+    virtual ~FileCacheManager();
+    // implemented functions
+    bool hasSolved(string problem) override;
+    string getSolution(string problem) override;
+    void saveSolution(string problem, string solution) override;
 };
 
 
