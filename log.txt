@@ -1,3 +1,48 @@
+commit 7bf534605e047f75d0bb89d8b4c3ce40021907fa
+Merge: cb97157 dcc1d79
+Author: bhyamy <32545086+bhyamy@users.noreply.github.com>
+Date:   Tue Jan 21 19:28:40 2020 +0200
+
+    Merge pull request #3 from bhyamy/client_handler
+    
+    test client handler added.
+
+commit dcc1d794c699da6269c8f50d4f177df585a8c94e
+Author: bhyamy <bhyamy@gmail.com>
+Date:   Tue Jan 21 19:25:50 2020 +0200
+
+    test client handler added.
+
+commit cb971578cb9ab4128355498d0aa481ff7e77ad9e
+Merge: 0bb6ddd dd30e49
+Author: irisgorelek <59398110+irisgorelek@users.noreply.github.com>
+Date:   Tue Jan 21 19:07:42 2020 +0200
+
+    Merge pull request #2 from bhyamy/solver
+    
+    added the string reverser class and edited the solver
+
+commit dd30e495f45b174e5ff191467e514faf6a365f90
+Author: Iris Gorelek <iris.gorelek@gmail.com>
+Date:   Tue Jan 21 19:06:03 2020 +0200
+
+    added the string reverser class and edited the solver
+
+commit 0bb6dddde39c0bf577476f01297b3305b8db7572
+Merge: a5dae29 2d3d843
+Author: bhyamy <32545086+bhyamy@users.noreply.github.com>
+Date:   Tue Jan 21 19:00:43 2020 +0200
+
+    Merge pull request #1 from bhyamy/server
+    
+    serial server added.
+
+commit 2d3d8435b48553bd0f5183cfc70937ad32c7ae99
+Author: bhyamy <bhyamy@gmail.com>
+Date:   Tue Jan 21 18:59:06 2020 +0200
+
+    serial server added.
+
 commit a5dae2925e8aa2b55e24881d30cf2664648192f3
 Author: bhyamy <bhyamy@gmail.com>
 Date:   Tue Jan 21 18:35:42 2020 +0200
