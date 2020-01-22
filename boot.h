@@ -6,18 +6,28 @@
 #define UNTITLED4_BOOT_H
 
 #include "MySerialServer.h"
-#include "Solver.h"
-#include "StringReverser.h"
-#include "ClientHandler.h"
+#include "MyTestClientHandler.h"
 
 namespace boot {
-    class Main {
-    public:
-        int main(int argc, char *argv[]) {
-            server_side::Server* server = new MySerialServer();
-            server->open(argv[1], )
-        }
-    };
+    class Main;
 }
+
+class boot::Main {
+public:
+   Main() {};
+   ~Main() {};
+   int main(int argc, char** argv) {
+       server_side::Server* server = new MySerialServer();
+       ClientHandler* clientHandler = new MyTestClientHandler();
+       try {
+           server->open(stoi(argv[1]), clientHandler);
+       } catch (const char* e) {
+           cout << e << endl;
+       }
+       return 0;
+   }
+};
+
+
 
 #endif //UNTITLED4_BOOT_H

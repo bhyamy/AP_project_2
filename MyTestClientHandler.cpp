@@ -19,6 +19,7 @@ void MyTestClientHandler::handleClient(int client_socket) {
             solution = _solver->solve(problem);
             _cacheManager->saveSolution(problem, solution);
         }
+        solution.push_back('\n');
         send(client_socket, solution.c_str(), solution.size(), 0);
     }
 }
@@ -42,6 +43,6 @@ string MyTestClientHandler::readData(int client_socket) {
         valRead += currRead;
     }
     //takes the exact data from the buffer
-    string exactData = data.substr(0, pos);
+    string exactData = data.substr(0, pos - 1);
     return exactData;
 }
