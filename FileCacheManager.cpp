@@ -33,7 +33,7 @@ string FileCacheManager::getSolution(string problem) {
     file.read(buffer, problem.size());
     file.close();
     string solution;
-    solution.append(buffer);
+    solution.assign(buffer, problem.size());
     return solution;
 }
 
