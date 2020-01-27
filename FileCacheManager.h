@@ -6,9 +6,11 @@
 #define AP_PROJECT2_FILECACHEMANAGER_H
 #include "CacheManager.h"
 #include <string>
+#include <vector>
 using namespace std;
 
 class FileCacheManager : public CacheManager<string, string> {
+    hash<string> hash;
 public:
     //ctor
     FileCacheManager();
