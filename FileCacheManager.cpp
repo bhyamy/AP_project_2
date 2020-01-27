@@ -6,8 +6,7 @@
 #include <iostream>
 #include <fstream>
 
-/*get solution - read till end of file, put all inside a string with buffer/append etc. put all to solution
-return solution.*/
+//TODO maybe add mutex
 
 //ctor
 FileCacheManager::FileCacheManager() {}
