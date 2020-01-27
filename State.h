@@ -41,7 +41,7 @@ public:
     }
 
     //setters
-    void setCameFrom(const State<T> &cameFrom) {
+    void setCameFrom(const State<T>* cameFrom) {
         _cameFrom = cameFrom;
     }
 
