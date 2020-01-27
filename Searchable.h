@@ -12,9 +12,9 @@ template <typename T>
 
 class Searchable {
 public:
-    virtual State<T> getStart() = 0;
-    virtual bool isGoal(State<T> state) = 0;
-    virtual list<State<T>> getPossibleStates(State<T> state) = 0;
+    virtual State<T>* getStart() = 0;
+    virtual bool isGoal(State<T>* state) = 0;
+    virtual list<State<T>*> getPossibleStates(State<T>* state) = 0; // todo - define also where the state came from.
 };
 
 
