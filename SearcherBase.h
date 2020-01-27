@@ -10,6 +10,7 @@
 #include "Searcher.h"
 #include "State.h"
 #include <set>
+#include <stack>
 using namespace std;
 
 struct ptrcomp {
@@ -61,6 +62,25 @@ protected:
     }
 
     bool shorter(State<T> s) { return s.getCost() < (*(_open_map.find(s.getState())))->getCost; }
+
+    State<T>* backTrace(State<T>* n) {
+        State<T>* start, temp;
+        stack<State<T>*> track;
+        start = n;
+        while (start != nullptr) {
+            track.push(start);
+            start = start->getCameFrom();
+        }
+        temp = track.top();
+        track.pop();
+        while (!track.empty()) {
+            temp.setCameFrom(track.top());
+            temp = track.top();
+            track.pop();
+        }
+        temp.setCameFrom(nullptr);
+        return start;
+    }
 
 public:
     void setTotalCost(int totalCost) {

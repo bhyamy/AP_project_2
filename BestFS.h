@@ -6,7 +6,6 @@
 #define AP_PROJECT_2_BESTFS_H
 
 #include "SearcherBase.h"
-#include <stack>
 
 
 template <typename T>
@@ -29,13 +28,12 @@ public:
             _closed[n->getState()] = n;
             if (searchable.isGoal(n)) {
                 this->setTotalCost(n->getCost());
-                return backTrace(n);
+                return this->backTrace(n);
             }
             list<State<T>*> successors = searchable.getPossibleStates(n);
             for (State<T>* s : successors) {
-                if (_closed->find(s) == _closed->end()) {
+                if (_closed->find(s->getState()) == _closed->end()) {
                     if (this->open_not_contains(s)){
-                        //todo define also where the state came from in get successors
                         this->pushQueue(s);
                     } else if (shorter(s)) {
                         this->open_replace(s);
@@ -44,27 +42,6 @@ public:
             }
         }
         //todo no solution
-    }
-
-private:
-    State<T>* backTrace(State<T>* n) {
-        //todo this method
-        State<T>* start, temp;
-        stack<State<T>*> track;
-        start = n;
-        while (start != nullptr) {
-            track.push(start);
-            start = start->getCameFrom();
-        }
-        temp = track.top();
-        track.pop();
-        while (!track.empty()) {
-            temp.setCameFrom(track.top());
-            temp = track.top();
-            track.pop();
-        }
-        temp.setCameFrom(nullptr);
-        return start;
     }
 };
 
