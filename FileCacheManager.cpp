@@ -6,8 +6,6 @@
 #include <iostream>
 #include <fstream>
 
-//TODO maybe add mutex
-
 //ctor
 FileCacheManager::FileCacheManager() {}
 
@@ -16,16 +14,20 @@ FileCacheManager::~FileCacheManager() {}
 
 bool FileCacheManager::hasSolved(string problem) {
     ifstream file;
+    mute.lock();
     file.open("Solution" + to_string(hash(problem)) + ".txt");
     if (file.is_open()) {
         file.close();
+        mute.unlock();
         return true;
     }
+    mute.unlock();
     return false;
 }
 
 string FileCacheManager::getSolution(string problem) {
     ifstream file;
+    mute.lock();
     file.open("Solution" + to_string(hash(problem)), ios::in);
     if (!file.is_open()) {
         throw "Could not open file";
@@ -38,6 +40,7 @@ string FileCacheManager::getSolution(string problem) {
     file.close();
     string solution;
     solution.assign(buffer.data());
+    mute.unlock();
     return solution;
     //TODO check if works, if yes delete this comments below!
     /*char buffer[problem.size()];
@@ -50,10 +53,12 @@ string FileCacheManager::getSolution(string problem) {
 
 void FileCacheManager::saveSolution(string problem, string solution) {
     ofstream file;
+    mute.lock();
     file.open(to_string(hash(problem)));
     if (!file.is_open()) {
         throw "Could not open file";
     }
     file.write(solution.c_str(), solution.size());
     file.close();
+    mute.unlock();
 }

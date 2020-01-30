@@ -7,10 +7,12 @@
 #include "CacheManager.h"
 #include <string>
 #include <vector>
+#include <mutex>
 using namespace std;
 
 class FileCacheManager : public CacheManager<string, string> {
     hash<string> hash;
+    mutex mute;
 public:
     //ctor
     FileCacheManager();
