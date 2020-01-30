@@ -1,9 +1,9 @@
 //
-// Created by bhyamy on 1/16/20.
+// Created by bhyamy on 1/28/20.
 //
 
-#ifndef AP_PROJECT2_MYSERIALSERVER_H
-#define AP_PROJECT2_MYSERIALSERVER_H
+#ifndef AP_PROJECT_2_MYPARALLELSERVER_H
+#define AP_PROJECT_2_MYPARALLELSERVER_H
 
 #include "server_side.h"
 #include <netinet/in.h>
@@ -11,24 +11,26 @@
 #include <unistd.h>
 #include <thread>
 #include <iostream>
+#include <vector>
 #define TIMEOUT 120
 using namespace std;
 
-class MySerialServer : public server_side::Server{
+class MyParallelServer : public server_side::Server {
     //member attributes
     int _sock, _client_socket;
     sockaddr_in _address;
     bool _should_stop;
     thread* _readingLoop;
+    vector<thread*> _client_threads;
 
     //private functions
     void reading(ClientHandler* clientHandler);
 
 public:
     //ctor
-    MySerialServer();
+    MyParallelServer();
     //dtor
-    virtual ~MySerialServer();
+    virtual ~MyParallelServer();
 
     //implemented methods
     void open(int port, ClientHandler* clientHandler) override;
@@ -37,4 +39,4 @@ public:
 };
 
 
-#endif //AP_PROJECT2_MYSERIALSERVER_H
+#endif //AP_PROJECT_2_MYPARALLELSERVER_H
