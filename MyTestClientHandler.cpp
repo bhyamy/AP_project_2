@@ -46,3 +46,4 @@ string MyTestClientHandler::readData(int client_socket) {
     string exactData = data.substr(0, pos - 1);
     return exactData;
 }
+
