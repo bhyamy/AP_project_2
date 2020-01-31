@@ -13,21 +13,21 @@ class BFS : public SearcherBase<T> {
     queue<State<T>*> _queue;
 public:
     //ctor
-    BFS() : SearcherBase<T>() {}
+    BFS() : SearcherBase<T>(){}
     //dtor
     virtual ~BFS() {}
     //implemented functions
-    State<T>* search(Searchable<State<T>*> &searchable) override {
-        _closed[searchable.getStart()->getState()] = searchable.getStart();
-        _queue.push(searchable.getStart());
+    State<T>* search(Searchable<T>* searchable) {
+        _closed[searchable->getStart()->getState()] = searchable->getStart();
+        _queue.push(searchable->getStart());
         while (!_queue.empty()) {
             auto v = _queue.front();
             _queue.pop();
-            if (searchable.isGoal(v)) {
+            if (searchable->isGoal(v)) {
                 this->setTotalCost(v->getCost());
                 return this->backTrace(v);
             }
-            list<State<T>*> successors = searchable.getPossibleStates(v);
+            list<State<T>*> successors = searchable->getPossibleStates(v);
             for (State<T>* s : successors) {
                 if (_closed->find(s->getState()) == _closed->end()) {
                     _closed[s->getState()] = s;
@@ -35,6 +35,7 @@ public:
                 }
             }
         }
+        return nullptr;
     }
 };
 

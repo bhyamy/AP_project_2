@@ -21,16 +21,16 @@ public:
     virtual ~BestFS() {}
 
     //implemented functions
-    State<T>* search(Searchable<State<T>*> &searchable) override {
-        this->pushQueue(searchable.getStart());
+    State<T>* search(Searchable<T>* searchable) override {
+        this->pushQueue(searchable->getStart());
         while (this->open_not_empty()) {
             auto n = this->popQueue();
             _closed[n->getState()] = n;
-            if (searchable.isGoal(n)) {
+            if (searchable->isGoal(n)) {
                 this->setTotalCost(n->getCost());
                 return this->backTrace(n);
             }
-            list<State<T>*> successors = searchable.getPossibleStates(n);
+            list<State<T>*> successors = searchable->getPossibleStates(n);
             for (State<T>* s : successors) {
                 if (_closed->find(s->getState()) == _closed->end()) {
                     if (this->open_not_contains(s)){
@@ -41,6 +41,7 @@ public:
                 }
             }
         }
+        return nullptr;
         //todo no solution
     }
 };

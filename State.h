@@ -17,7 +17,10 @@ public:
     //ctor
     State(T state):_state(state) {}
     //dtor
-    virtual ~State() {}
+    virtual ~State() {
+        if (_cameFrom != nullptr)
+            delete _cameFrom;
+    }
     //methods
     bool operator==(State<T> other) {
         return _state == other->_state;
