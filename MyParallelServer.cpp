@@ -59,8 +59,8 @@ void MyParallelServer::reading(ClientHandler* clientHandler) {
             cout << errno << endl;
             throw "Could not accept the client";
         }
-        
-        _client_threads.push_back(new thread(&ClientHandler::handleClient, clientHandler, _client_socket));
+        ClientHandler* clientCopy = clientHandler->clone();
+        _client_threads.push_back(new thread(&ClientHandler::handleClient, clientCopy, _client_socket));
     }
     for (thread* t : _client_threads) {
         t->join();
