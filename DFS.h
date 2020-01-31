@@ -18,17 +18,17 @@ public:
     //dtor
     virtual ~DFS() {}
     //implemented functions
-    State<T>* search(Searchable<State<T>*> &searchable) override {
-        _closed[searchable.getStart()->getState()] = searchable.getStart();
-        _stack.push(searchable.getStart());
+    State<T>* search(Searchable<T>* searchable) override {
+        _closed[searchable->getStart()->getState()] = searchable->getStart();
+        _stack.push(searchable->getStart());
         while (!_stack.empty()) {
             auto v = _stack.top();
             _stack.pop();
-            if (searchable.isGoal(v)) {
+            if (searchable->isGoal(v)) {
                 this->setTotalCost(v->getCost());
                 return this->backTrace(v);
             }
-            list<State<T>*> successors = searchable.getPossibleStates(v);
+            list<State<T>*> successors = searchable->getPossibleStates(v);
             for (State<T>* s : successors) {
                 if (_closed->find(s->getState()) == _closed->end()) {
                     _closed[s->getState()] = s;
@@ -36,6 +36,7 @@ public:
                 }
             }
         }
+        nullptr;
     }
 };
 

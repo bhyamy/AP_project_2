@@ -11,7 +11,7 @@
 namespace boot {
     class Main;
 }
-
+//todo fix main
 class boot::Main {
 public:
    Main() {};
