@@ -10,7 +10,6 @@
 template <typename T>
 
 class DFS : public SearcherBase<T> {
-    map<T, State<T>*> _closed;
     stack<State<T>*> _stack;
 public:
     //ctor
@@ -19,7 +18,7 @@ public:
     virtual ~DFS() {}
     //implemented functions
     State<T>* search(Searchable<T>* searchable) override {
-        _closed[searchable->getStart()->getState()] = searchable->getStart();
+        this->pushClose(searchable->getStart());
         _stack.push(searchable->getStart());
         while (!_stack.empty()) {
             auto v = _stack.top();
@@ -30,8 +29,8 @@ public:
             }
             list<State<T>*> successors = searchable->getPossibleStates(v);
             for (State<T>* s : successors) {
-                if (_closed->find(s->getState()) == _closed->end()) {
-                    _closed[s->getState()] = s;
+                if (this->close_not_contains(s)) {
+                    this->pushClose(s);
                     _stack.push(s);
                 }
             }
