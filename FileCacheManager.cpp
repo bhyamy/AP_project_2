@@ -15,7 +15,7 @@ FileCacheManager::~FileCacheManager() {}
 bool FileCacheManager::hasSolved(string problem) {
     ifstream file;
     mute.lock();
-    file.open("Solution" + to_string(hash(problem)) + ".txt");
+    file.open("Solution" + to_string(_hash(problem)) + ".txt");
     if (file.is_open()) {
         file.close();
         mute.unlock();
@@ -28,7 +28,7 @@ bool FileCacheManager::hasSolved(string problem) {
 string FileCacheManager::getSolution(string problem) {
     ifstream file;
     mute.lock();
-    file.open("Solution" + to_string(hash(problem)), ios::in);
+    file.open("Solution" + to_string(_hash(problem)) + ".txt", ios::in);
     if (!file.is_open()) {
         throw "Could not open file";
     }
@@ -39,7 +39,7 @@ string FileCacheManager::getSolution(string problem) {
     file.read(&buffer[0],length);
     file.close();
     string solution;
-    solution.assign(buffer.data());
+    solution.assign(buffer.data(), buffer.size());
     mute.unlock();
     return solution;
     //TODO check if works, if yes delete this comments below!
@@ -54,7 +54,7 @@ string FileCacheManager::getSolution(string problem) {
 void FileCacheManager::saveSolution(string problem, string solution) {
     ofstream file;
     mute.lock();
-    file.open(to_string(hash(problem)));
+    file.open("Solution" + to_string(_hash(problem)) + ".txt");
     if (!file.is_open()) {
         throw "Could not open file";
     }

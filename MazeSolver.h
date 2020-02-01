@@ -10,6 +10,7 @@
 #include "BFS.h"
 #include "DFS.h"
 #include "BestFS.h"
+#include "AStar.h"
 
 class MazeSolver : public Solver<string, string> {
 

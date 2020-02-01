@@ -7,7 +7,7 @@
 //ctor
 MyRealClientHandler::MyRealClientHandler() {
     _cacheManager = new FileCacheManager();
-    _solver = new MazeSover();
+    _solver = new MazeSolver();
 }
 //dtor
 MyRealClientHandler::~MyRealClientHandler() {
@@ -38,18 +38,19 @@ ClientHandler *MyRealClientHandler::clone() {
 string MyRealClientHandler::readData(int client_socket) {
     string data;
     int valRead, pos;
-    char buffer[1024];
-    valRead = read(client_socket, buffer, 1024);
+    char first_buffer[1024];
+    valRead = read(client_socket, first_buffer, 1024);
     int currRead = valRead;
-    data.append(buffer, valRead);
+    data.append(first_buffer, valRead);
     //if there are no \n in the buffer, read the whole info from buffer
     while ((pos = data.find("end", valRead - currRead)) == -1) {
+        char buffer[1024] = "";
         currRead = read(client_socket, buffer, 1024);
         data.append(buffer);
         valRead += currRead;
     }
     //takes the exact data from the buffer
-    string exactData = data.substr(0, pos - 2);
+    string exactData = data.substr(0, pos);
     string::iterator end_pos = remove(exactData.begin(), exactData.end(), ' ');
     exactData.erase(end_pos, exactData.end());
     return exactData;

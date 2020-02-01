@@ -11,7 +11,7 @@
 using namespace std;
 
 class FileCacheManager : public CacheManager<string, string> {
-    hash<string> hash;
+    hash<string> _hash;
     mutex mute;
 public:
     //ctor

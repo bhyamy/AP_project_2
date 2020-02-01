@@ -14,7 +14,8 @@ class Searchable {
 public:
     virtual State<T>* getStart() = 0;
     virtual bool isGoal(State<T>* state) = 0;
-    virtual list<State<T>*> getPossibleStates(State<T>* state) = 0; // todo - define also where the state came from.
+    virtual State<T>* getGoal() = 0;
+    virtual list<State<T>*> getPossibleStates(State<T>* state) = 0;
 };
 
 

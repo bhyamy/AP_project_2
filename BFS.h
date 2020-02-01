@@ -9,7 +9,6 @@
 template <typename T>
 
 class BFS : public SearcherBase<T> {
-    map<T, State<T>*> _closed;
     queue<State<T>*> _queue;
 public:
     //ctor
@@ -18,7 +17,7 @@ public:
     virtual ~BFS() {}
     //implemented functions
     State<T>* search(Searchable<T>* searchable) {
-        _closed[searchable->getStart()->getState()] = searchable->getStart();
+        this->pushClose(searchable->getStart());
         _queue.push(searchable->getStart());
         while (!_queue.empty()) {
             auto v = _queue.front();
@@ -29,8 +28,8 @@ public:
             }
             list<State<T>*> successors = searchable->getPossibleStates(v);
             for (State<T>* s : successors) {
-                if (_closed->find(s->getState()) == _closed->end()) {
-                    _closed[s->getState()] = s;
+                if (this->close_not_contains(s)) {
+                    this->pushClose(s);
                     _queue.push(s);
                 }
             }

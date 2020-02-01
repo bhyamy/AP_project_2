@@ -40,16 +40,19 @@ void MyParallelServer::stop() {
 
 void MyParallelServer::reading(ClientHandler* clientHandler) {
     struct timeval timeout;
+    socklen_t addr_size;
     timeout.tv_sec = TIMEOUT;
-    timeout.tv_usec = 0;
+//    timeout.tv_usec = 0;
     setsockopt(_sock, SOL_SOCKET, SO_RCVTIMEO, (const char*) &timeout, sizeof(timeout));
+    //in case of an error in the listening part
+    if (listen(_sock, 10) == -1) {
+        throw "Error during listen command";
+    }
+    addr_size = sizeof _address;
     while (!_should_stop) {
-        //in case of an error in the listening part
-        if (listen(_sock, 10) == -1) {
-            throw "Error during listen command";
-        }
+
         //accepting the client
-        _client_socket = accept(_sock, (struct sockaddr *) &_address, (socklen_t *) &_address);
+        _client_socket = accept(_sock, (struct sockaddr *) &_address, &addr_size);
         //in case of a client accepting error
         if (_client_socket == -1) {
             if (errno == EWOULDBLOCK || errno == EAGAIN) {
@@ -61,9 +64,10 @@ void MyParallelServer::reading(ClientHandler* clientHandler) {
         }
         ClientHandler* clientCopy = clientHandler->clone();
         _client_threads.push_back(new thread(&ClientHandler::handleClient, clientCopy, _client_socket));
+        _client_threads.back()->detach();
     }
-    for (thread* t : _client_threads) {
-        t->join();
-    }
+//    for (thread* t : _client_threads) {
+//        t->join();
+//    }
     close(_sock);
 }

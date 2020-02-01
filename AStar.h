@@ -1,22 +1,22 @@
 //
-// Created by bhyamy on 1/23/20.
+// Created by bhyamy on 2/1/20.
 //
 
-#ifndef AP_PROJECT_2_BESTFS_H
-#define AP_PROJECT_2_BESTFS_H
+#ifndef AP_PROJECT_2_ASTAR_H
+#define AP_PROJECT_2_ASTAR_H
 
 #include "SearcherBase.h"
-
+#include <cmath>
 
 template <typename T>
-class BestFS : public SearcherBase<T> {
+class AStar : public SearcherBase<T> {
 public:
     //ctor
-    BestFS() : SearcherBase<T>() {}
+    AStar() : SearcherBase<T>() {}
     //dtor
-    virtual ~BestFS() {}
+    virtual ~AStar() {}
     //implemented functions
-    State<T>* search(Searchable<T>* searchable) override {
+    State<T> *search(Searchable<T> *searchable) override {
         this->pushQueue(searchable->getStart());
         while (this->open_not_empty()) {
             auto n = this->popQueue();
@@ -27,6 +27,7 @@ public:
             }
             list<State<T>*> successors = searchable->getPossibleStates(n);
             for (State<T>* s : successors) {
+                s->setHeuristic(getHeuristic(s, searchable->getGoal()->getState()));
                 if (this->close_not_contains(s)) {
                     if (this->open_not_contains(s)){
                         this->pushQueue(s);
@@ -38,7 +39,15 @@ public:
         }
         return nullptr;
     }
+
+    //private methods
+private:
+    int getHeuristic(State<T>* s, pair<int,int> goal) {
+        int i;
+        i = abs(goal.first - s->getState().first) + abs(goal.second - s->getState().second);
+        return i;
+    }
 };
 
 
-#endif //AP_PROJECT_2_BESTFS_H
+#endif //AP_PROJECT_2_ASTAR_H

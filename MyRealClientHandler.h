@@ -8,6 +8,7 @@
 #include "ClientHandler.h"
 #include "Solver.h"
 #include "FileCacheManager.h"
+#include "MazeSolver.h"
 #include <string>
 #include <iostream>
 #include <unistd.h>

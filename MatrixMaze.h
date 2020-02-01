@@ -21,8 +21,8 @@ public:
     //ctor
     MatrixMaze(const vector<vector<int>> &matrix, const pair<int, int> &start, const pair<int, int> &goal):
     _matrix (matrix), _start(start), _goal(goal) {
-        _lim_y = _matrix.size();
-        _lim_x = _matrix[0].size();
+        _lim_y = _matrix.size() - 1;
+        _lim_x = _matrix[0].size() - 1;
     }
 
     //dtor
@@ -40,25 +40,32 @@ public:
         return state->getState() == _goal;
     }
 
+    State<pair<int, int>> *getGoal() override {
+        auto* goal = new State<pair<int, int>>(_goal);
+        goal->setCost(_matrix[_start.first][_start.second]);
+        goal->setCameFrom(nullptr);
+        return goal;
+    }
+
     list<State<pair<int, int>>*> getPossibleStates(State<pair<int, int>> *state) override {
         list<State<pair<int, int>>*> successors;
         int y = state->getState().first;
         int x = state->getState().second;
 
         //below
-        if (state->getState().first < _lim_y && _matrix[y + 1][x] > -1) {
-            successors.push_back(stateBuilder(y - 1, x, state));
+        if (y < _lim_y && _matrix[y + 1][x] > -1) {
+            successors.push_back(stateBuilder(y + 1, x, state));
         }
         //right
-        if (state->getState().second < _lim_x && _matrix[y][x + 1] > -1) {
+        if (x < _lim_x && _matrix[y][x + 1] > -1) {
             successors.push_back(stateBuilder(y, x + 1, state));
         }
         //left
-        if (state->getState().second < _lim_x && _matrix[y][x - 1] > -1) {
+        if (x > 0 && _matrix[y][x - 1] > -1) {
             successors.push_back(stateBuilder(y, x - 1, state));
         }
         //above
-        if (state->getState().first > 0 && _matrix[y - 1][x] > -1) {
+        if (y > 0 && _matrix[y - 1][x] > -1) {
             successors.push_back(stateBuilder(y - 1, x, state));
         }
 
@@ -68,7 +75,7 @@ public:
 private:
     State<pair<int, int>>* stateBuilder(int y, int x, State<pair<int, int>>* state) {
         auto* temp = new State<pair<int, int>>({y, x});
-        temp->setCost(_matrix[y][x]);
+        temp->setCost(_matrix[y][x] + state->getG());
         temp->setCameFrom(state);
         return temp;
     }

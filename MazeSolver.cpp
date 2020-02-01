@@ -6,9 +6,8 @@
 
 //ctor
 MazeSolver::MazeSolver() {
-    //TODO dont forget to put Astar back from comment
     //put all the algorithms in the list
-    //_searchers.push_back(new Astar<pair<int, int>>);
+    _searchers.push_back(new AStar<pair<int, int>>);
     _searchers.push_back(new BestFS<pair<int, int>>);
     _searchers.push_back(new BFS<pair<int, int>>);
     _searchers.push_back(new DFS<pair<int, int>>);
@@ -31,7 +30,8 @@ string MazeSolver::solve(string problem) {
         vector<int> inside_mat;
         while (problem.substr(current, 1) != "\n") {
             //put each number inside a cell, numbers are separated with commas
-            string cell = problem.substr(current,problem.find_first_of(",\n") - current); //todo think about \r
+            string cell = problem.substr(current,
+                    min(problem.find_first_of(',', current), problem.find_first_of('\n', current)) - current); //todo think about \r
             int cell_mat = stoi(cell);
             inside_mat.push_back(cell_mat);
             current += cell.size();
@@ -70,14 +70,20 @@ string MazeSolver::solve(string problem) {
 
 string MazeSolver::buildSolution(State<pair<int, int>> *solution_path) {
     //the came from are actually acting as next
-    string solution = "";
+    string solution;
+    bool first = true;
     State<pair<int, int>> *temp = solution_path;
+    if (solution_path == nullptr) {
+        return "No Solution.";
+    }
     while (temp != nullptr) {
-        if (temp != solution_path) {
-            solution += "(" + to_string(temp->getCost()) + ")";
+        if (!first) {
+            solution += "(" + to_string(temp->getG()) + ")";
         }
         if (temp->getCameFrom() != nullptr) {
-            solution += " ,";
+            if (!first) {
+                solution += " ,";
+            }
             if (temp->getState().first > temp->getCameFrom()->getState().first) {
                 solution += "Up ";
             } else if (temp->getState().first < temp->getCameFrom()->getState().first) {
@@ -88,6 +94,9 @@ string MazeSolver::buildSolution(State<pair<int, int>> *solution_path) {
                 solution += "Right ";
             }
         }
+        if (first)
+            first = !first;
+        temp = temp->getCameFrom();
     }
     return solution;
 }
