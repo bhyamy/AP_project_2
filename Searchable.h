@@ -16,6 +16,8 @@ public:
     virtual bool isGoal(State<T>* state) = 0;
     virtual State<T>* getGoal() = 0;
     virtual list<State<T>*> getPossibleStates(State<T>* state) = 0;
+
+    virtual ~Searchable() {}
 };
 
 

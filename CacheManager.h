@@ -12,6 +12,8 @@ public:
     virtual bool hasSolved(Problem problem) = 0;
     virtual Solution getSolution(Problem problem) = 0;
     virtual void saveSolution(Problem problem, Solution solution) = 0;
+
+    virtual ~CacheManager() {}
 };
 
 

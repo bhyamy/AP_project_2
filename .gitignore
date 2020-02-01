@@ -2,3 +2,11 @@ CMakeLists.txt
 /cmake-build-debug
 /.idea
 matrix_graph.pdf
+/Matrixs.txt
+/details.txt
+/a.out
+/Astar_Solutions.txt
+/BestFS_Solutions.txt
+/BFS_Solutions.txt
+/DFS_Solutions.txt
+/ex4.zip

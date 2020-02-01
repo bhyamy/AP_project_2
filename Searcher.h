@@ -13,6 +13,8 @@ class Searcher {
 public:
     virtual State<T>* search(Searchable<T>* searchable) = 0;
     virtual int getCost() = 0;
+
+    virtual ~Searcher() {}
 };
 
 

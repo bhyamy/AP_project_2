@@ -11,8 +11,10 @@ namespace server_side {
     public:
         virtual void open(int port, ClientHandler* clientHandler) = 0;
         virtual void stop() = 0;
+
+        virtual ~Server() {}
     };
-};
+}
 
 
 #endif //AP_PROJECT2_SERVER_SIDE_H
