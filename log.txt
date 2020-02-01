@@ -1,3 +1,180 @@
+commit d14a8259359288f0e849c90a98a47019c9662b7d
+Author: bhyamy <bhyamy@gmail.com>
+Date:   Sat Feb 1 19:39:17 2020 +0200
+
+    Astar done. total fixes before submition.
+
+commit 89060d05a36fe800f04a05e46bc8e95f2648140b
+Merge: 5f90554 9808598
+Author: bhyamy <32545086+bhyamy@users.noreply.github.com>
+Date:   Fri Jan 31 21:15:30 2020 +0200
+
+    Merge pull request #14 from bhyamy/solver
+    
+    maze solver added. minor fixes in other files to make it work.
+
+commit 5f90554e16ffa93dceaa5593028b905589ea09f1
+Merge: c2a24cb 644559d
+Author: bhyamy <32545086+bhyamy@users.noreply.github.com>
+Date:   Fri Jan 31 21:14:20 2020 +0200
+
+    Merge pull request #13 from bhyamy/client_handler
+    
+    real client handler added with clone methode. parallel server modifie…
+
+commit 980859815a4065b5b80438d8eb979aee40030a7d
+Author: irisgorelek <iris.gorelek@gmail.com>
+Date:   Fri Jan 31 12:14:14 2020 +0200
+
+    maze solver added. minor fixes in other files to make work.
+
+commit 644559dedde64d0ea0a941778068f8ed145e2f00
+Author: bhyamy <bhyamy@gmail.com>
+Date:   Fri Jan 31 01:10:06 2020 +0200
+
+    real client handler added with clone methode. parallel server modified to include clone.
+
+commit c2a24cb249519a9a0fc106c5f15b102e0d8b9cfa
+Merge: f81e3dc 05332db
+Author: bhyamy <32545086+bhyamy@users.noreply.github.com>
+Date:   Thu Jan 30 21:58:28 2020 +0200
+
+    Merge pull request #12 from bhyamy/cache
+    
+    added mutex
+
+commit f81e3dc52a0e8dfc601aa8e0168dba8f8bfc345d
+Merge: 299f0c5 99f1a2e
+Author: bhyamy <32545086+bhyamy@users.noreply.github.com>
+Date:   Thu Jan 30 21:53:14 2020 +0200
+
+    Merge pull request #11 from bhyamy/server
+    
+    added parrallel server.
+
+commit 05332dbe729244e8b3a23652ef38d53582fc2af9
+Author: irisgorelek <iris.gorelek@gmail.com>
+Date:   Thu Jan 30 21:30:54 2020 +0200
+
+    added mutex
+
+commit 299f0c5c3a0f6d80aea8daa130586ff1c4263c50
+Merge: f5336ff 9b0ce16
+Author: irisgorelek <59398110+irisgorelek@users.noreply.github.com>
+Date:   Thu Jan 30 21:26:52 2020 +0200
+
+    Merge pull request #10 from bhyamy/cache
+    
+    Cache
+
+commit 99f1a2e0d578b4d860b8451f8f9fc72194ae2a06
+Author: bhyamy <bhyamy@gmail.com>
+Date:   Thu Jan 30 21:25:13 2020 +0200
+
+    added parrallel server.
+
+commit 9b0ce169a881a69ec16730dfad80a4db720d582b
+Author: irisgorelek <iris.gorelek@gmail.com>
+Date:   Tue Jan 28 01:07:30 2020 +0200
+
+    added minor changes
+
+commit 6c5eefdf6c2bc2e374987f96ab44b7e6f4e455c7
+Author: irisgorelek <iris.gorelek@gmail.com>
+Date:   Tue Jan 28 00:37:48 2020 +0200
+
+    edited the filecache class, now works with big files and not only strings
+
+commit f5336ff2d8a9f473f9d3cb8cd6129c27e7f48bda
+Merge: 27f201c 649b3c0
+Author: irisgorelek <59398110+irisgorelek@users.noreply.github.com>
+Date:   Mon Jan 27 20:13:34 2020 +0200
+
+    Merge pull request #9 from bhyamy/searchable
+    
+    matrix maze searchable done.
+
+commit 27f201c46a53adf95fc2719b119f55449b2dbe97
+Merge: 926abea 8ac4269
+Author: irisgorelek <59398110+irisgorelek@users.noreply.github.com>
+Date:   Mon Jan 27 20:12:59 2020 +0200
+
+    Merge pull request #8 from bhyamy/algorithms
+    
+    added the BFS, DFS algorithms, fixed bestFS
+
+commit 649b3c073ff78bd2c9646d9303dcdb16acd2b494
+Author: bhyamy <bhyamy@gmail.com>
+Date:   Mon Jan 27 17:55:15 2020 +0200
+
+    matrix maze searchable done.
+
+commit 8ac4269038feec4ef23750a374379e34b26a753b
+Author: irisgorelek <iris.gorelek@gmail.com>
+Date:   Mon Jan 27 17:52:47 2020 +0200
+
+    added the BFS, DFS algorithms, fixed bestFS
+
+commit 926abeab9490a2ae817d4cede7d81d89045586f8
+Merge: 304f447 171d52c
+Author: bhyamy <32545086+bhyamy@users.noreply.github.com>
+Date:   Mon Jan 27 15:14:13 2020 +0200
+
+    Merge pull request #7 from bhyamy/algorithms
+    
+    added searchers,state and bestFS algorithm.
+
+commit 304f4473993d2617c85c9a438a9b9f5941cf0beb
+Merge: ce0ef3a b5b36a5
+Author: bhyamy <32545086+bhyamy@users.noreply.github.com>
+Date:   Mon Jan 27 15:13:46 2020 +0200
+
+    Merge pull request #6 from bhyamy/searchable
+    
+    added the searchable interface and state class
+
+commit 171d52cb3ffe12cb77286b1033786562ea5c3b5c
+Author: bhyamy <bhyamy@gmail.com>
+Date:   Mon Jan 27 13:48:00 2020 +0200
+
+    added searchers,state and bestFS algorithm.
+
+commit b5b36a56b1eb57a6fa24a9724d8f1b82906da7b0
+Author: bhyamy <bhyamy@gmail.com>
+Date:   Thu Jan 23 18:18:07 2020 +0200
+
+    added the searchable interface and state class
+
+commit ce0ef3a904a7992c0d2aef9d7fc307f0348e2e29
+Merge: df8b3a8 f589417
+Author: irisgorelek <59398110+irisgorelek@users.noreply.github.com>
+Date:   Wed Jan 22 12:15:15 2020 +0200
+
+    Merge pull request #5 from bhyamy/cache
+    
+    updated everything, checked the second part everything works
+
+commit f5894179e7aa2cf2d49cffffba1a54d920f3fdce
+Author: Iris Gorelek <iris.gorelek@gmail.com>
+Date:   Wed Jan 22 12:13:55 2020 +0200
+
+    updated everything, checked the second part everything works
+
+commit df8b3a82b9ed9b9d3b72ad705cf79f94e489b7f3
+Merge: 7bf5346 0e653de
+Author: irisgorelek <59398110+irisgorelek@users.noreply.github.com>
+Date:   Tue Jan 21 20:42:22 2020 +0200
+
+    Merge pull request #4 from bhyamy/cache
+    
+    finished the cache functions and added a boot class
+
+commit 0e653ded8d56150751ffe3232f8945e3b29358c2
+Author: Iris Gorelek <iris.gorelek@gmail.com>
+Date:   Tue Jan 21 20:41:23 2020 +0200
+
+    finished the cache functions and added a boot class
+
 commit 7bf534605e047f75d0bb89d8b4c3ce40021907fa
 Merge: cb97157 dcc1d79
 Author: bhyamy <32545086+bhyamy@users.noreply.github.com>

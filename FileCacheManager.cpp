@@ -42,13 +42,6 @@ string FileCacheManager::getSolution(string problem) {
     solution.assign(buffer.data(), buffer.size());
     mute.unlock();
     return solution;
-    //TODO check if works, if yes delete this comments below!
-    /*char buffer[problem.size()];
-    file.read(buffer, problem.size());
-    file.close();
-    string solution;
-    solution.assign(buffer, problem.size());
-    return solution;*/
 }
 
 void FileCacheManager::saveSolution(string problem, string solution) {

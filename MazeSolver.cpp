@@ -31,7 +31,7 @@ string MazeSolver::solve(string problem) {
         while (problem.substr(current, 1) != "\n") {
             //put each number inside a cell, numbers are separated with commas
             string cell = problem.substr(current,
-                    min(problem.find_first_of(',', current), problem.find_first_of('\n', current)) - current); //todo think about \r
+                    min(problem.find_first_of(',', current), problem.find_first_of('\n', current)) - current);
             int cell_mat = stoi(cell);
             inside_mat.push_back(cell_mat);
             current += cell.size();
