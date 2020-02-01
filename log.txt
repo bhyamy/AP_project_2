@@ -1,3 +1,33 @@
+commit 60397a12c1a073ae2aeaa2c003914ba447c224f8
+Author: irisgorelek <59398110+irisgorelek@users.noreply.github.com>
+Date:   Sat Feb 1 23:16:29 2020 +0200
+
+    Create README.md
+
+commit 95950cc5a9998c5357217a7893ff1d252ef09fe9
+Merge: d8f7cb2 6c3a56a
+Author: irisgorelek <59398110+irisgorelek@users.noreply.github.com>
+Date:   Sat Feb 1 23:06:43 2020 +0200
+
+    Merge pull request #16 from bhyamy/algorithms
+    
+    all algorithms fully operational.
+
+commit 6c3a56a4675d1bb07cacd4fe6725acd7d3e76216
+Author: bhyamy <bhyamy@gmail.com>
+Date:   Sat Feb 1 23:05:14 2020 +0200
+
+    all algorithms fully operational.
+
+commit d8f7cb2632b7854a9a9bdbbf5f4e8e8b26790169
+Merge: 89060d0 d14a825
+Author: bhyamy <32545086+bhyamy@users.noreply.github.com>
+Date:   Sat Feb 1 19:40:26 2020 +0200
+
+    Merge pull request #15 from bhyamy/algorithms
+    
+    Astar done. total fixes before submition.
+
 commit d14a8259359288f0e849c90a98a47019c9662b7d
 Author: bhyamy <bhyamy@gmail.com>
 Date:   Sat Feb 1 19:39:17 2020 +0200
