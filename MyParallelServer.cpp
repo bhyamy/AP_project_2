@@ -42,7 +42,7 @@ void MyParallelServer::reading(ClientHandler* clientHandler) {
     struct timeval timeout;
     socklen_t addr_size;
     timeout.tv_sec = TIMEOUT;
-//    timeout.tv_usec = 0;
+    timeout.tv_usec = 0;
     setsockopt(_sock, SOL_SOCKET, SO_RCVTIMEO, (const char*) &timeout, sizeof(timeout));
     //in case of an error in the listening part
     if (listen(_sock, 10) == -1) {

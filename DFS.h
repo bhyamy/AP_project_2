@@ -28,10 +28,11 @@ public:
                 return this->backTrace(v);
             }
             list<State<T>*> successors = searchable->getPossibleStates(v);
-            for (State<T>* s : successors) {
-                if (this->close_not_contains(s)) {
-                    this->pushClose(s);
-                    _stack.push(s);
+            typename list<State<T>*>::reverse_iterator it;
+            for (it = successors.rbegin(); it != successors.rend(); it++) {
+                if (this->close_not_contains(*it)) {
+                    this->pushClose(*it);
+                    _stack.push(*it);
                 }
             }
         }
